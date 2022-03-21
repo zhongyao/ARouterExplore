@@ -9,17 +9,16 @@ import com.hongri.arouter.R;
 import com.hongri.arouter.bean.ManualBean;
 
 import static com.hongri.arouter.common.Constant.PATH_ACTIVITY_SIMPLE;
-import static com.hongri.arouter.common.Constant.RESULT_CODE;
 
 //在支持的路由页面添加注解
 @Route(path = PATH_ACTIVITY_SIMPLE)
 public class SimpleActivity extends BaseActivity {
 
     private TextView textView;
-    @Autowired
+    @Autowired(name = "name")
     String name;
 
-    @Autowired
+    @Autowired(name = "age")
     int age;
 
     @Autowired(name = "bean")
@@ -29,6 +28,7 @@ public class SimpleActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple);
+
         textView = findViewById(R.id.text);
         textView.setText("姓名：" + name + " 年龄：" + age + " ManualBean对象：" + manualBean);
     }
