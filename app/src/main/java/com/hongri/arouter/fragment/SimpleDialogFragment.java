@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,7 +40,7 @@ public class SimpleDialogFragment extends DialogFragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        show(((FragmentActivity)activity).getSupportFragmentManager(), TAG);
+        show(((FragmentActivity) activity).getSupportFragmentManager(), TAG);
     }
 
     @Override
@@ -48,10 +50,18 @@ public class SimpleDialogFragment extends DialogFragment {
         Log.d(TAG, "SimpleDialogFragment --- hashCode:" + hashCode());
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //弹出框透明背景样式
+        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.MyLoadingDialog);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
+//        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); //去除默认白色边框
         return LayoutInflater.from(getContext()).inflate(R.layout.fragment_simple, container, false);
     }
 
@@ -67,6 +77,22 @@ public class SimpleDialogFragment extends DialogFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+//        setBackGroundTransparent();
+    }
+
+    /**
+     * DialogFragment实现透明背景方法二
+     */
+    private void setBackGroundTransparent() {
+        Window window = getDialog().getWindow();
+        WindowManager.LayoutParams windowParams = window.getAttributes();
+        windowParams.dimAmount = 0.0f;
+        window.setAttributes(windowParams);
     }
 
     @Override
