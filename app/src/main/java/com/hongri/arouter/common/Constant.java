@@ -15,4 +15,6 @@ public interface Constant {
     String PATH_ACTIVITY_SIMPLE = "/app/activity/SimpleActivity";
 
     String URI_ACTIVITY_SIMPLE = "/app/activity/simple_uri_activity";
+
+    String PATH_FRAGMENT_SIMPLE = "/app/fragment/SimpleDialogFragment";
 }

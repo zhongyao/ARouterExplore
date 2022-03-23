@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hongri.arouter.R;
-import com.hongri.arouter.bean.ManualBean;
 
 import static com.hongri.arouter.common.Constant.PATH_ACTIVITY_MAIN;
 import static com.hongri.arouter.common.Constant.PATH_ACTIVITY_SIMPLE;
@@ -41,19 +40,19 @@ public class MainActivity extends BaseActivity {
 //                        navigation();
 
                 //【通过Bundle传递】
-                Bundle bundle = new Bundle();
-                bundle.putString("name", "hongri");
-                bundle.putInt("age", 20);
-                bundle.putParcelable("bean", new ManualBean("tom", 22));
-                ARouter.getInstance().
-                        build(PATH_ACTIVITY_SIMPLE).
-                        with(bundle).
-                        navigation();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("name", "hongri");
+//                bundle.putInt("age", 20);
+//                bundle.putParcelable("bean", new ManualBean("tom", 22));
+//                ARouter.getInstance().
+//                        build(PATH_ACTIVITY_SIMPLE).
+//                        with(bundle).
+//                        navigation();
 
                 /**
                  * 2、界面跳转动画
                  */
-//                ARouter.getInstance().build(PATH_ACTIVITY_SIMPLE).withTransition(R.anim.slid_in_left, R.anim.slid_in_left).navigation();
+                ARouter.getInstance().build(PATH_ACTIVITY_SIMPLE).withTransition(R.anim.slid_in_left, R.anim.slid_in_left).navigation();
 
                 /**
                  * 3、使用URI进行跳转
