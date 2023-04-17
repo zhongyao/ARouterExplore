@@ -24,6 +24,7 @@ public class HomeApplication extends Application {
         //官方建议在Application中初始化
         ARouter.init(this);
         endTime = System.currentTimeMillis();
+        //针对该demo优化前耗时：400ms 优化后(AOP)耗时：100ms
         Log.d(TAG, "ARouter--init--spendTime:" + (endTime - beginTime));
     }
 
